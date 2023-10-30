@@ -12,14 +12,15 @@ public class UserDAO {
     private Connection connection;
 
     public UserDAO(Connection conn) {
-        connection = conn;
+
+        this.connection = conn;
     }
 
     public void save(User user) throws SQLException {
         // Если пользователь новый, выполняем вставку
         // Иначе обновляем
         if (user.getId() == null) {
-            var sql = "INSERT INTO user (username, phone) VALUES (?, ?)";
+            var sql = "INSERT INTO users (username, phone) VALUES (?, ?)";
             try (var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, user.getName());
                 preparedStatement.setString(2, user.getPhone());
@@ -33,8 +34,6 @@ public class UserDAO {
                     throw new SQLException("DB have not returned an id after saving an entity");
                 }
             }
-        } else {
-            // Здесь код обновления существующей записи
         }
     }
 

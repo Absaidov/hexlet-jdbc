@@ -1,9 +1,6 @@
 package io.hexlet;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import io.hexlet.User;
 
@@ -20,12 +17,21 @@ public class Application {
                 statement.execute(sql);
             }
             var dao = new UserDAO(conn);
-            var user = new User("jamal", "90999");
-            System.out.println(user.getId());
+            var user = new User("Maria", "888888888");
+//            var user2 = new User("absaid", "22222");
+//            var user3 = new User("papa", "33333");
+//            System.out.println(user.getId());
             dao.save(user);
-//            System.out.println(dao.find(1L));
+//            dao.save(user2);
+//            dao.save(user3);
+            System.out.println("DAO.SAVE");
+            System.out.println(user.getId());
+//            System.out.println(user2.getId());
+
+            var user2 = dao.find(user.getId()).get();
+            System.out.println(user2);
+            System.out.println(user2.getId() == user.getId());
+
         }
-//        var conn =  DriverManager.getConnection("jdbc:h2:mem:hexlet");
-//            System.out.println(user.getName());
     }
 }
