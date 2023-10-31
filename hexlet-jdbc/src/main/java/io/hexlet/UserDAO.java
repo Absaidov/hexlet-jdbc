@@ -12,7 +12,6 @@ public class UserDAO {
     private Connection connection;
 
     public UserDAO(Connection conn) {
-
         this.connection = conn;
     }
 
@@ -52,6 +51,12 @@ public class UserDAO {
                 return Optional.of(user);
             }
             return Optional.empty();
+        }
+    }
+    public void delete(Long id) throws SQLException {
+        var sql = "DELETE FROM users WHERE id = ?";
+        try (var preparedStatement = connection.prepareStatement(sql)) {
+//            preparedStatement.
         }
     }
 }
