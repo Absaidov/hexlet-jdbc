@@ -56,7 +56,8 @@ public class UserDAO {
     public void delete(Long id) throws SQLException {
         var sql = "DELETE FROM users WHERE id = ?";
         try (var preparedStatement = connection.prepareStatement(sql)) {
-//            preparedStatement.
+            preparedStatement.executeQuery();
+//            preparedStatement.executeUpdate();
         }
     }
 }

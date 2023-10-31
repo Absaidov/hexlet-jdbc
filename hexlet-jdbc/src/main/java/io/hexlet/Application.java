@@ -20,7 +20,7 @@ public class Application {
             var user = new User("Maria", "888888888");
 //            var user2 = new User("absaid", "22222");
 //            var user3 = new User("papa", "33333");
-//            System.out.println(user.getId());
+            System.out.println(user.getId());
             dao.save(user);
 //            dao.save(user2);
 //            dao.save(user3);
@@ -28,9 +28,12 @@ public class Application {
             System.out.println(user.getId());
 //            System.out.println(user2.getId());
 
-            var user2 = dao.find(user.getId()).get();
-            System.out.println(user2);
-            System.out.println(user2.getId() == user.getId());
+//            var user2 = dao.find(user.getId()).get();
+//            System.out.println(user2);
+//            System.out.println(user2.getId() == user.getId());
+
+            dao.delete(user.getId());
+            System.out.println(user.getId());
 
         }
     }
