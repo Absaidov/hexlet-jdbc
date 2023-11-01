@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import io.hexlet.User;
 
+import static java.sql.DriverManager.getConnection;
+
 public class UserDAO {
     private Connection connection;
 
@@ -55,9 +57,10 @@ public class UserDAO {
     }
     public void delete(Long id) throws SQLException {
         var sql = "DELETE FROM users WHERE id = ?";
-        try (var preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.executeQuery();
-//            preparedStatement.executeUpdate();
+        try (var preparedStatement = connection.prepareStatement(sql);) {
+            preparedStatement.setInt(1, Math.toIntExact(id));
+            preparedStatement.executeUpdate();
+            System.out.println("Data deleted Successfully");
         }
-    }
+   }
 }

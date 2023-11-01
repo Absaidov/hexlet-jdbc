@@ -18,10 +18,17 @@ public class Application {
             }
             var dao = new UserDAO(conn);
             var user = new User("Maria", "888888888");
+            var user2 = new User("jama", "111111111");
+
+            var user3 = new User("absaidov", "99999999");
+
 //            var user2 = new User("absaid", "22222");
 //            var user3 = new User("papa", "33333");
             System.out.println(user.getId());
             dao.save(user);
+            dao.save(user2);
+            dao.save(user3);
+
 //            dao.save(user2);
 //            dao.save(user3);
             System.out.println("DAO.SAVE");
@@ -32,8 +39,9 @@ public class Application {
 //            System.out.println(user2);
 //            System.out.println(user2.getId() == user.getId());
 
-            dao.delete(user.getId());
-            System.out.println(user.getId());
+            dao.delete(user2.getId());
+//            System.out.println(user2.getName());
+//            System.out.println(user.getId());
 
         }
     }
